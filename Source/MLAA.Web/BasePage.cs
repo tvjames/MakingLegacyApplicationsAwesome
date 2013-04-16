@@ -1,16 +1,21 @@
-﻿using System.Web.UI;
+﻿using System;
+using System.Web.UI;
 
 namespace MLAA.Web
 {
-    public class BasePage<TViewModel>: Page
+    public class BasePage<TViewModel> : Page
         where TViewModel : class
     {
         public BasePage()
         {
-            //ViewModel = new TViewModel();
-            //FIXME this doesn't work any more. We need to create some magic. Will do that shortly :)
+            ViewModel = Global.Container.Resolve<TViewModel>();
         }
 
         public TViewModel ViewModel { get; set; }
+
+        protected override void OnUnload(EventArgs e)
+        {
+            Global.Container.Release(ViewModel);
+        }
     }
 }

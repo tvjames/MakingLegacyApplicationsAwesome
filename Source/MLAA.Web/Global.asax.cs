@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Optimization;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
 using MLAA.Database;
 
 /// <summary>
@@ -16,6 +18,8 @@ namespace MLAA.Web
     /// </summary>
     public class Global : HttpApplication
     {
+        public static WindsorContainer Container;
+
         /// <summary>
         /// Code that runs on application startup
         /// </summary>
@@ -24,6 +28,10 @@ namespace MLAA.Web
         private void Application_Start(object sender, EventArgs e)
         {
             DatabaseUpgrader.UpgradeTheWorld(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
+
+            Container = new WindsorContainer();
+
+            Container.Install(FromAssembly.This());
 
             // Code that runs on application startup
             BundleConfig.RegisterBundles(BundleTable.Bundles);
