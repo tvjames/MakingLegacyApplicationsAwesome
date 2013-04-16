@@ -26,13 +26,13 @@
             <td>
                 <%= s.FirstName %> <%= s.LastName %>
                     <%
-                        foreach (var e in EnrolmentManager.GetStudentEnrolments(s.Id))
+                        foreach (var subject in EnrolmentManager.GetStudentEnrolments(s.Id))
                         {
                             %>
                     <tr>
                         <td></td>
-                        <td><%=((System.Data.Common.DbDataRecord)e) ["Code"] %></td>
-                        <td><%=((System.Data.Common.DbDataRecord)e) ["Name"] %></td>
+                        <td><%=subject.Code %></td>
+                        <td><%=subject.Name %></td>
                     </tr>
                     <%
                         }

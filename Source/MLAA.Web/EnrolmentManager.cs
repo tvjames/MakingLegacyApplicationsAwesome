@@ -7,13 +7,13 @@ using MLAA.Data.Linq2Sql;
 namespace MLAA.Web
 {
     /// <summary>
-    /// This class is where everything about student enrokllments goes. DO NOT PUT ANYTHING ABOUT ENROLMENTS ANYWHERE ELSE
-    /// OR I WILL SHOUT AT YOU.
+    ///     This class is where everything about student enrokllments goes. DO NOT PUT ANYTHING ABOUT ENROLMENTS ANYWHERE ELSE
+    ///     OR I WILL SHOUT AT YOU.
     /// </summary>
     public static class EnrolmentManager
     {
         /// <summary>
-        /// Is the Enrolled
+        ///     Is the Enrolled
         /// </summary>
         /// <param name="studentId"></param>
         /// <param name="subjectId"></param>
@@ -39,17 +39,18 @@ namespace MLAA.Web
         }
 
         /// <summary>
-        /// Searches for a student by name.
+        ///     Searches for a student by name.
         /// </summary>
         /// <param name="name">Any Part of the first name or last name of the student.</param>
         /// <returns></returns>
         [Obsolete("Use the non-horrible version, please :)")]
         public static SqlDataReader SearchStudents(string name)
         {
-            var sql = "SELECT * FROM Student WHERE LastName LIKE '"+name+"%'";
+            var sql = "SELECT * FROM Student WHERE LastName LIKE '" + name + "%'";
             var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
             connection.Open();
-            var command = new SqlCommand(sql, connection);var result = command.ExecuteReader();
+            var command = new SqlCommand(sql, connection);
+            var result = command.ExecuteReader();
             return result;
         }
 
@@ -57,15 +58,10 @@ namespace MLAA.Web
         {
             var context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
             return context.Students
-                          .Where(s => s.LastName.StartsWith(name))  //FIXME bug? Should this be .Contains(name)?
+                          .Where(s => s.LastName.StartsWith(name)) //FIXME bug? Should this be .Contains(name)?
                           .ToArray();
         }
 
-        /// <summary>
-        /// Searches for a student by name.
-        /// </summary>
-        /// <param name="name">Any Part of the first name or last name of the student.</param>
-        /// <returns></returns>
         public static Subject[] GetStudentEnrolments(int name)
         {
             var context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
@@ -74,19 +70,6 @@ namespace MLAA.Web
                 .StudentSubjectEnrolments
                 .Select(sse => sse.Subject)
                 .ToArray();
-
-            //var sql = "SELECT * FROM Student WHERE LastName LIKE '%" + name + "%'";
-            //var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
-            //connection.Open();
-            //var command = new SqlCommand(sql, connection);
-            //var result = command.ExecuteReader();
-            //return result; 
-            var sql = "SELECT * FROM Subject AS sse INNER JOIN StudentSubjectEnrolment AS s ON sse.Id = s.StudentId WHERE s.StudentId=" + name;
-            var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
-            connection.Open();
-            var command = new SqlCommand(sql, connection);
-            var result = command.ExecuteReader();
-            return result;
         }
     }
 }
