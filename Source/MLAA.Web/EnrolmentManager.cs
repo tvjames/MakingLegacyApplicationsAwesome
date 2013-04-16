@@ -1,13 +1,16 @@
-﻿using System.Configuration;
-using System.Linq;
+﻿using System.Linq;
 using MLAA.Data.Linq2Sql;
 
 namespace MLAA.Web
 {
     public class EnrolmentManager
     {
-        private readonly DerpUniversityDataContext _context =
-            new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
+        private readonly DerpUniversityDataContext _context;
+
+        public EnrolmentManager(DerpUniversityDataContext context)
+        {
+            _context = context;
+        }
 
         public bool IsEnrolled(int studentId, int subjectId)
         {

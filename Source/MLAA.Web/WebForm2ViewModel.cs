@@ -5,9 +5,13 @@ namespace MLAA.Web
 {
     public class WebForm2ViewModel
     {
-        public WebForm2ViewModel()
+        private readonly EnrolmentManager _enrolmentManager;
+
+        public WebForm2ViewModel(EnrolmentManager enrolmentManager)
         {
-            Students = new EnrolmentManager().SearchStudents("");
+            _enrolmentManager = enrolmentManager;
+
+            Students = _enrolmentManager.SearchStudents("");
         }
 
         public Student[] Students { get; set; }
@@ -15,7 +19,7 @@ namespace MLAA.Web
         [Obsolete("This is a dirty hack. Please refactor.")]
         public Subject[] GetStudentEnrolments(int studentId)
         {
-            return new EnrolmentManager().GetStudentEnrolments(studentId);
+            return _enrolmentManager.GetStudentEnrolments(studentId);
         }
     }
 }

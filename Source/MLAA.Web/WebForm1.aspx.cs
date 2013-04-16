@@ -34,7 +34,7 @@ namespace MLAA.Web
     /// <summary>
     /// WebForm 1
     /// </summary>
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class WebForm1 : BasePage<WebForm1ViewModel>
     {
         /// <summary>
         /// 
@@ -75,7 +75,7 @@ namespace MLAA.Web
             string SQL;
             int SUBJECT;
             int.TryParse(subject, out SUBJECT);
-            if (new EnrolmentManager().IsEnrolled(Authentication.CurrentUser.UserId, SUBJECT))
+            if (ViewModel.IsEnrolled(Authentication.CurrentUser.UserId, SUBJECT))
             {
                 SQL = "DELETE FROM StudentSubjectEnrolment WHERE StudentId=" + Authentication.CurrentUser.UserId + " AND SubjectId=" + subject;
             }
@@ -111,7 +111,7 @@ namespace MLAA.Web
                 var BUTTON1 = (Button) e.Item.FindControl("Button1");
                 int subjectId = (int) dataRowView["Id"];
 
-                if (new EnrolmentManager().IsEnrolled(Authentication.CurrentUser.UserId, subjectId))
+                if (ViewModel.IsEnrolled(Authentication.CurrentUser.UserId, subjectId))
                 {
                     BUTTON1.Text = "Cancel enrolment";
                 }
@@ -120,6 +120,21 @@ namespace MLAA.Web
             {
                 throw E;
             }
+        }
+    }
+
+    public class WebForm1ViewModel
+    {
+        private readonly EnrolmentManager _enrolmentManager;
+
+        public WebForm1ViewModel(EnrolmentManager enrolmentManager)
+        {
+            _enrolmentManager = enrolmentManager;
+        }
+
+        public bool IsEnrolled(int userId, int subjectId)
+        {
+            return _enrolmentManager.IsEnrolled(userId, subjectId);
         }
     }
 }
