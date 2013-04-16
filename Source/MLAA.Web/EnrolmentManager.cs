@@ -1,5 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
+using MLAA.Data.Linq2Sql;
 
 namespace MLAA.Web
 {
@@ -40,6 +43,7 @@ namespace MLAA.Web
         /// </summary>
         /// <param name="name">Any Part of the first name or last name of the student.</param>
         /// <returns></returns>
+        [Obsolete("Use the non-horrible version, please :)")]
         public static SqlDataReader SearchStudents(string name)
         {
             var sql = "SELECT * FROM Student WHERE LastName LIKE '"+name+"%'";
@@ -47,6 +51,14 @@ namespace MLAA.Web
             connection.Open();
             var command = new SqlCommand(sql, connection);var result = command.ExecuteReader();
             return result;
+        }
+
+        public static Student[] SearchStudentsNonHorrible(string name)
+        {
+            var context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
+            return context.Students
+                          .Where(s => s.LastName.StartsWith(name))  //FIXME bug? Should this be .Contains(name)?
+                          .ToArray();
         }
 
         /// <summary>
