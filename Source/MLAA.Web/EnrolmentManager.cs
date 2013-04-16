@@ -23,12 +23,11 @@ namespace MLAA.Web
         /// </summary>
         /// <param name="name">Any Part of the first name or last name of the student.</param>
         /// <returns></returns>
-        public Student[] SearchStudentsNonHorrible(string name)
+        public Student[] SearchStudents(string name)
         {
-            var context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
-            return context.Students
-                          .Where(s => s.LastName.StartsWith(name)) //FIXME bug? Should this be .Contains(name)? According to the XMLDoc it's a bug...
-                          .ToArray();
+            return _context.Students
+                           .Where(s => s.LastName.StartsWith(name)) //FIXME bug? Should this be .Contains(name)? According to the XMLDoc it's a bug...
+                           .ToArray();
         }
 
         public Subject[] GetStudentEnrolments(int name)

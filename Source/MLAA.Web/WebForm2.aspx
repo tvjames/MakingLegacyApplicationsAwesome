@@ -19,7 +19,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <table>
     <%
-        foreach (var s in EnrolmentManager.SearchStudentsNonHorrible(""))
+        foreach (var s in EnrolmentManager.SearchStudents(""))
         {
     %>
         <tr>
