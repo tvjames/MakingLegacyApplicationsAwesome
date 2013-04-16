@@ -27,5 +27,11 @@ namespace MLAA.Web
         }
 
         public Student[] Students { get; set; }
+
+        [Obsolete("This is a dirty hack. Please refactor.")]
+        public Subject[] GetStudentEnrolments(int studentId)
+        {
+            return new EnrolmentManager().GetStudentEnrolments(studentId);
+        }
     }
 }
