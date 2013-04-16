@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.5" name="DerpUniversity">
+  <DataContextMoniker Name="/DerpUniversityDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a74a39a8-e5ba-4cf9-879f-e32e03b593ce" absoluteBounds="3.5, 1.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DerpUniversityDataContext/Student" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0f5f463c-fab3-40b9-8262-22a95f4e7521" absoluteBounds="3.515, 1.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4344a74d-772d-40a4-89b8-a940160e87af" absoluteBounds="9, 2.25, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/DerpUniversityDataContext/StudentSubjectEnrolment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac7ad38f-8087-4cc6-9a61-09e0296a03be" absoluteBounds="9.015, 2.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b5196e72-7776-4a7b-9edb-1d67a2a7dbb6" absoluteBounds="3.125, 3.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DerpUniversityDataContext/Subject" />
+      <nestedChildShapes>
+        <elementListCompartment Id="42f8498a-65aa-4680-8645-9a4b0f43ede0" absoluteBounds="3.14, 4.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 2.63544840494792); (9 : 2.63544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DerpUniversityDataContext/Student/Student_StudentSubjectEnrolment" />
+      <nodes>
+        <classShapeMoniker Id="a74a39a8-e5ba-4cf9-879f-e32e03b593ce" />
+        <classShapeMoniker Id="4344a74d-772d-40a4-89b8-a940160e87af" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.125 : 4.66429768880208); (10 : 4.66429768880208); (10 : 3.44399251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DerpUniversityDataContext/Subject/Subject_StudentSubjectEnrolment" />
+      <nodes>
+        <classShapeMoniker Id="b5196e72-7776-4a7b-9edb-1d67a2a7dbb6" />
+        <classShapeMoniker Id="4344a74d-772d-40a4-89b8-a940160e87af" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
