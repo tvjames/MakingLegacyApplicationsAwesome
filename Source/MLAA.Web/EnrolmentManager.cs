@@ -12,30 +12,16 @@ namespace MLAA.Web
     /// </summary>
     public  class EnrolmentManager
     {
-        /// <summary>
-        ///     Is the Enrolled
-        /// </summary>
-        /// <param name="studentId"></param>
-        /// <param name="subjectId"></param>
-        /// <returns></returns>
+        private readonly DerpUniversityDataContext _context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
+
+       
         public  bool IsEnrolled(int studentId, int subjectId)
         {
-            try
-            {
-                //var sql = "SELECT COUNT(*) FROM StudentSubjectEnrolment WHERE StudentId = " + Authentication.CurrentUser.UserId
-                //var sql = "SELECT COUNT(*) FROM StudentSubjectEnrolment WHERE SubjectId='"+subjectId+"'";
-                var sql = "SELECT COUNT(*) FROM StudentSubjectEnrolment WHERE StudentId = " + Authentication.CurrentUser.UserId + " AND SubjectId='" + subjectId + "'";
-                var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
-                connection.Open();
-                var command = new SqlCommand(sql, connection);
-                var result = (int) command.ExecuteScalar();
-                if (result > 0) return true;
-                return false;
-            }
-            catch
-            {
-                return false;
-            }
+            return _context
+                .StudentSubjectEnrolments
+                .Where(sse => sse.StudentId == studentId)
+                .Where(sse => sse.SubjectId == subjectId)
+                .Any();
         }
 
         /// <summary>
@@ -64,8 +50,7 @@ namespace MLAA.Web
 
         public  Subject[] GetStudentEnrolments(int name)
         {
-            var context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
-            var student = context.Students.First(s => s.Id == name);
+            var student = _context.Students.First(s => s.Id == name);
             return student
                 .StudentSubjectEnrolments
                 .Select(sse => sse.Subject)
