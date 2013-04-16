@@ -19,14 +19,14 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <table>
     <%
-        foreach (var s in EnrolmentManager.SearchStudents(""))
+        foreach (var s in new EnrolmentManager().SearchStudents(""))
         {
     %>
         <tr>
             <td>
                 <%= s.FirstName %> <%= s.LastName %>
                     <%
-                        foreach (var subject in EnrolmentManager.GetStudentEnrolments(s.Id))
+            foreach (var subject in new EnrolmentManager().GetStudentEnrolments(s.Id))
                         {
                             %>
                     <tr>
