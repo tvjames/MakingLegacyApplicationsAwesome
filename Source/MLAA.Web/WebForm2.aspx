@@ -26,7 +26,7 @@
             <td>
                 <%= s.FirstName %> <%= s.LastName %>
                     <%
-                        foreach (var e in EnrolmentManager.GetSTUdentEnrolments(s.Id))
+                        foreach (var e in EnrolmentManager.GetStudentEnrolments(s.Id))
                         {
                             %>
                     <tr>
