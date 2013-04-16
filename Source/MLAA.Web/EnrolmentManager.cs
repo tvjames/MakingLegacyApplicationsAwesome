@@ -66,8 +66,15 @@ namespace MLAA.Web
         /// </summary>
         /// <param name="name">Any Part of the first name or last name of the student.</param>
         /// <returns></returns>
-        public static SqlDataReader GetStudentEnrolments(int name)
+        public static Subject[] GetStudentEnrolments(int name)
         {
+            var context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
+            var student = context.Students.First(s => s.Id == name);
+            return student
+                .StudentSubjectEnrolments
+                .Select(sse => sse.Subject)
+                .ToArray();
+
             //var sql = "SELECT * FROM Student WHERE LastName LIKE '%" + name + "%'";
             //var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
             //connection.Open();
