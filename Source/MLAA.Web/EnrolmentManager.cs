@@ -10,7 +10,7 @@ namespace MLAA.Web
     ///     This class is where everything about student enrokllments goes. DO NOT PUT ANYTHING ABOUT ENROLMENTS ANYWHERE ELSE
     ///     OR I WILL SHOUT AT YOU.
     /// </summary>
-    public static class EnrolmentManager
+    public  class EnrolmentManager
     {
         /// <summary>
         ///     Is the Enrolled
@@ -18,7 +18,7 @@ namespace MLAA.Web
         /// <param name="studentId"></param>
         /// <param name="subjectId"></param>
         /// <returns></returns>
-        public static bool IsEnrolled(int studentId, int subjectId)
+        public  bool IsEnrolled(int studentId, int subjectId)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace MLAA.Web
         /// <param name="name">Any Part of the first name or last name of the student.</param>
         /// <returns></returns>
         [Obsolete("Use the non-horrible version, please :)")]
-        public static SqlDataReader SearchStudents(string name)
+        public  SqlDataReader SearchStudents(string name)
         {
             var sql = "SELECT * FROM Student WHERE LastName LIKE '" + name + "%'";
             var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
@@ -54,7 +54,7 @@ namespace MLAA.Web
             return result;
         }
 
-        public static Student[] SearchStudentsNonHorrible(string name)
+        public  Student[] SearchStudentsNonHorrible(string name)
         {
             var context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
             return context.Students
@@ -62,7 +62,7 @@ namespace MLAA.Web
                           .ToArray();
         }
 
-        public static Subject[] GetStudentEnrolments(int name)
+        public  Subject[] GetStudentEnrolments(int name)
         {
             var context = new DerpUniversityDataContext(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
             var student = context.Students.First(s => s.Id == name);

@@ -75,7 +75,7 @@ namespace MLAA.Web
             string SQL;
             int SUBJECT;
             int.TryParse(subject, out SUBJECT);
-            if (EnrolmentManager.IsEnrolled(Authentication.CurrentUser.UserId, SUBJECT))
+            if (new EnrolmentManager().IsEnrolled(Authentication.CurrentUser.UserId, SUBJECT))
             {
                 SQL = "DELETE FROM StudentSubjectEnrolment WHERE StudentId=" + Authentication.CurrentUser.UserId + " AND SubjectId=" + subject;
             }
@@ -111,7 +111,7 @@ namespace MLAA.Web
                 var BUTTON1 = (Button) e.Item.FindControl("Button1");
                 int subjectId = (int) dataRowView["Id"];
 
-                if (EnrolmentManager.IsEnrolled(Authentication.CurrentUser.UserId, subjectId))
+                if (new EnrolmentManager().IsEnrolled(Authentication.CurrentUser.UserId, subjectId))
                 {
                     BUTTON1.Text = "Cancel enrolment";
                 }
