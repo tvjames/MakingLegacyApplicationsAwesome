@@ -1,9 +1,16 @@
-﻿using System.Web.UI;
-
-namespace MLAA.Web
+﻿namespace MLAA.Web
 {
-    public partial class WebForm2 : Page
+    public partial class WebForm2 : BasePage<WebForm2ViewModel>
     {
-        public WebForm2ViewModel ViewModel { get; set; }
+    }
+
+    public class BasePage<TViewModel> where TViewModel : class, new()
+    {
+        public BasePage()
+        {
+            ViewModel = new TViewModel();
+        }
+
+        public TViewModel ViewModel { get; set; }
     }
 }
