@@ -36,11 +36,18 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.5.0.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Shouldly">
+      <HintPath>..\packages\Shouldly.1.1.1.1\lib\35\Shouldly.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StudentTests\WhenAStudentEnrolsInASubject.cs" />
     <Compile Include="WhenTheTestHarnessRuns.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindsorDemystification.cs" />
@@ -57,6 +65,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MLAA.Core\MLAA.Core.csproj">
+      <Project>{330956B4-26A2-49A0-BA2C-EDFB97317115}</Project>
+      <Name>MLAA.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MLAA.Data.Linq2Sql\MLAA.Data.Linq2Sql.csproj">
+      <Project>{67CD29B0-7592-48F5-BEE1-DAA42DE8EE0E}</Project>
+      <Name>MLAA.Data.Linq2Sql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MLAA.Web\MLAA.Web.csproj">
       <Project>{B1FB8929-B73C-4E10-AE46-D74E1AFBFE39}</Project>
       <Name>MLAA.Web</Name>

@@ -1,4 +1,5 @@
-﻿using MLAA.Core.Domain.Events;
+﻿using System;
+using MLAA.Core.Domain.Events;
 using MLAA.Data.Linq2Sql;
 
 namespace MLAA.Core.Domain.Entities
@@ -7,7 +8,9 @@ namespace MLAA.Core.Domain.Entities
     {
         public static void AcceptEnrolmentFor(this Subject subject, Student student)
         {
-            //FIXME precondition checks here
+            if (subject.StudentSubjectEnrolments.Count >= subject.MaxStudents)
+                throw new InvalidOperationException(
+                    "Too many students. No room for you");
 
             var enrolment = new StudentSubjectEnrolment
             {
