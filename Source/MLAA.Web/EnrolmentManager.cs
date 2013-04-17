@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using MLAA.Core.Domain.Entities;
 using MLAA.Data.Linq2Sql;
 
 namespace MLAA.Web
@@ -40,6 +42,37 @@ namespace MLAA.Web
                 .StudentSubjectEnrolments
                 .Select(sse => sse.Subject)
                 .ToArray();
+        }
+
+        public void ToggleStudentEnrolment(int studentId, int subjectId)
+        {
+            var student = GetStudentById(studentId);
+            var subject = GetSubjectById(subjectId);
+
+            if (IsEnrolled(studentId, subjectId))
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                student.EnrolIn(subject);
+            }
+
+            _context.SubmitChanges(); //FIXME this is a horrible hack.
+        }
+
+        private Student GetStudentById(int studentId)
+        {
+            return _context.Students
+                           .Where(s => s.Id == studentId)
+                           .Single();
+        }
+
+        private Subject GetSubjectById(int subjectId)
+        {
+            return _context.Subjects
+                           .Where(s => s.Id == subjectId)
+                           .Single();
         }
     }
 }

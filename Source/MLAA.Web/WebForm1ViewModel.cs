@@ -13,5 +13,10 @@
         {
             return _enrolmentManager.IsEnrolled(userId, subjectId);
         }
+
+        public void ToggleStudentEnrolment(int studentId, int subjectId)
+        {
+            _enrolmentManager.ToggleStudentEnrolment(studentId, subjectId);
+        }
     }
 }

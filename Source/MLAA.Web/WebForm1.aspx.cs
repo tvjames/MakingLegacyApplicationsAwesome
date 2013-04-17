@@ -70,25 +70,11 @@ namespace MLAA.Web
         /// <param name="e"></param>
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            string subject = ((HiddenField)Repeater1.Items[e.Item.ItemIndex].FindControl("hiddenId")).Value;
+            var subject = ((HiddenField)Repeater1.Items[e.Item.ItemIndex].FindControl("hiddenId")).Value;
+            var subjectId = int.Parse(subject);
+            var studentId = Authentication.CurrentUser.UserId;
 
-            string SQL;
-            int SUBJECT;
-            int.TryParse(subject, out SUBJECT);
-            if (ViewModel.IsEnrolled(Authentication.CurrentUser.UserId, SUBJECT))
-            {
-                SQL = "DELETE FROM StudentSubjectEnrolment WHERE StudentId=" + Authentication.CurrentUser.UserId + " AND SubjectId=" + subject;
-            }
-            else
-            {
-                SQL = "INSERT INTO StudentSubjectEnrolment (StudentId, SubjectId) VALUES (" + Authentication.CurrentUser.UserId + ", " + subject + ")";
-            }
-
-            // not sure how this works but it was on stack overflow
-                        var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DerpUniversityConnectionString"].ConnectionString);
-                        connection.Open();
-                        var command = new SqlCommand(SQL, connection);
-                        command.ExecuteNonQuery();
+            ViewModel.ToggleStudentEnrolment(studentId, subjectId);
         }
 
         /// <summary>

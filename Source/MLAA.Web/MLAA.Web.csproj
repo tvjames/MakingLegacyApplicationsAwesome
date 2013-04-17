@@ -261,6 +261,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MLAA.Core\MLAA.Core.csproj">
+      <Project>{330956B4-26A2-49A0-BA2C-EDFB97317115}</Project>
+      <Name>MLAA.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MLAA.Data.Linq2Sql\MLAA.Data.Linq2Sql.csproj">
       <Project>{67CD29B0-7592-48F5-BEE1-DAA42DE8EE0E}</Project>
       <Name>MLAA.Data.Linq2Sql</Name>

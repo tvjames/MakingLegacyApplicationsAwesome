@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLAA.UnitTests", "MLAA.Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLAA.Data.Linq2Sql", "MLAA.Data.Linq2Sql\MLAA.Data.Linq2Sql.csproj", "{67CD29B0-7592-48F5-BEE1-DAA42DE8EE0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLAA.Core", "MLAA.Core\MLAA.Core.csproj", "{330956B4-26A2-49A0-BA2C-EDFB97317115}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{67CD29B0-7592-48F5-BEE1-DAA42DE8EE0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67CD29B0-7592-48F5-BEE1-DAA42DE8EE0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67CD29B0-7592-48F5-BEE1-DAA42DE8EE0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{330956B4-26A2-49A0-BA2C-EDFB97317115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{330956B4-26A2-49A0-BA2C-EDFB97317115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{330956B4-26A2-49A0-BA2C-EDFB97317115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{330956B4-26A2-49A0-BA2C-EDFB97317115}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
