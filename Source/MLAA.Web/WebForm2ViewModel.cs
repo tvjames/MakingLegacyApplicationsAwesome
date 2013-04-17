@@ -1,25 +1,23 @@
 ﻿using System;
-using MLAA.Data.Linq2Sql;
 
 namespace MLAA.Web
 {
     public class WebForm2ViewModel
     {
         private readonly EnrolmentManager _enrolmentManager;
+        private readonly Lazy<StudentEnrolmentDto[]> _studentEnrolments;
 
         public WebForm2ViewModel(EnrolmentManager enrolmentManager)
         {
             _enrolmentManager = enrolmentManager;
 
-            Students = _enrolmentManager.SearchStudents("");
+            _studentEnrolments = new Lazy<StudentEnrolmentDto[]>(
+                _enrolmentManager.GetAllStudentEnrolments, false);
         }
 
-        public Student[] Students { get; set; }
-
-        [Obsolete("This is a dirty hack. Please refactor.")]
-        public Subject[] GetStudentEnrolments(int studentId)
+        public StudentEnrolmentDto[] StudentEnrolments
         {
-            return _enrolmentManager.GetStudentEnrolments(studentId);
+            get { return _studentEnrolments.Value; }
         }
     }
 }

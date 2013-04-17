@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="MLAA.Web.WebForm2" %>
+
 <%@ Import Namespace="MLAA.Web" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -18,28 +19,30 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <table>
-    <%
-        foreach (var s in ViewModel.Students)
-        {
-    %>
-        <tr>
-            <td>
-                <%= s.FirstName %> <%= s.LastName %>
-                    <%
-            foreach (var subject in ViewModel.GetStudentEnrolments(s.Id))
-                        {
-                            %>
+
+        <%
+            foreach (var s in ViewModel.StudentEnrolments)
+            {
+                %>
+                <tr>
+                    <td>
+                        <%= s.FirstName %> <%= s.LastName %>
+                
+                    </td>
+                </tr>
+
+                <%
+                foreach (var subject in s.Subjects)
+                {
+                    %>
                     <tr>
                         <td></td>
                         <td><%=subject.Code %></td>
                         <td><%=subject.Name %></td>
                     </tr>
                     <%
-                        }
-                    %>
-            </td>
-        </tr>
-        <%
-        } %>
-        </table>
+                }
+            }
+        %>
+    </table>
 </asp:Content>

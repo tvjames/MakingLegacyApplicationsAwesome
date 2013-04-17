@@ -74,5 +74,21 @@ namespace MLAA.Web
                            .Where(s => s.Id == subjectId)
                            .Single();
         }
+
+        public StudentEnrolmentDto[] GetAllStudentEnrolments()
+        {
+            var result = _context.Students.Select(student => new StudentEnrolmentDto
+            {
+                FirstName = student.FirstName,
+                LastName = student.LastName,
+                Subjects = student.StudentSubjectEnrolments
+                                  .Select(sse => new SubjectDto
+                                  {
+                                      Code = sse.Subject.Code,
+                                      Name = sse.Subject.Name
+                                  }).ToArray()
+            });
+            return result.ToArray();
+        }
     }
 }
