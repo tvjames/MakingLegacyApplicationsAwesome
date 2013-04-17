@@ -218,8 +218,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\EmailSender.cs" />
     <Compile Include="Installers\DataContextsInstaller.cs" />
     <Compile Include="Installers\EnrolmentManagerInstaller.cs" />
+    <Compile Include="Installers\EventHandlersInstaller.cs" />
+    <Compile Include="Installers\InfrastructureInstaller.cs" />
     <Compile Include="Installers\VIewModelsInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -245,6 +248,7 @@
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm2ViewModel.cs" />
+    <Compile Include="WindsorEventBroker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

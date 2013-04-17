@@ -40,8 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainEvents.cs" />
+    <Compile Include="IEventBroker.cs" />
     <Compile Include="Domain\Entities\StudentExtensions.cs" />
     <Compile Include="Domain\Entities\SubjectExtensions.cs" />
+    <Compile Include="Domain\EventHandlers\WhenAStudentEnrolsInASubject\SendThemAConfirmationEmail.cs" />
+    <Compile Include="Domain\Events\StudentEnrolledInSubject.cs" />
+    <Compile Include="IDomainEvent.cs" />
+    <Compile Include="IEmailSender.cs" />
+    <Compile Include="IHandle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

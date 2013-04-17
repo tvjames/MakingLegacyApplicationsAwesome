@@ -6,7 +6,9 @@ using System.Web;
 using System.Web.Optimization;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using MLAA.Core;
 using MLAA.Database;
+using MLAA.Web.App_Start;
 
 /// <summary>
 /// 
@@ -32,6 +34,8 @@ namespace MLAA.Web
             Container = new WindsorContainer();
 
             Container.Install(FromAssembly.This());
+
+            DomainEvents.SetEventBrokerStrategy(new WindsorEventBroker());
 
             // Code that runs on application startup
             BundleConfig.RegisterBundles(BundleTable.Bundles);

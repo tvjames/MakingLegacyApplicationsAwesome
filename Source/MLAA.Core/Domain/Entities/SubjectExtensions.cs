@@ -1,4 +1,5 @@
-﻿using MLAA.Data.Linq2Sql;
+﻿using MLAA.Core.Domain.Events;
+using MLAA.Data.Linq2Sql;
 
 namespace MLAA.Core.Domain.Entities
 {
@@ -16,7 +17,7 @@ namespace MLAA.Core.Domain.Entities
 
             subject.StudentSubjectEnrolments.Add(enrolment);
 
-            //FIXME tell the world
+            DomainEvents.Raise(new StudentEnrolledInSubject(student, subject));
         }
     }
 }

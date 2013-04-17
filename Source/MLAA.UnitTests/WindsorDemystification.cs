@@ -7,8 +7,8 @@ namespace MLAA.UnitTests
 {
     public class WindsorDemystification
     {
-        [Test, Ignore]
-        public void Go()
+        [Test]
+        public void ThereShouldBeNoComponentsWithBorkedRegistrations()
         {
             var container = new WindsorContainer();
             container.Install(
