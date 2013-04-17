@@ -99,3 +99,29 @@ Before the workshop, your laptop should contain:
 The hashtags for the day are #Readify #DevDay and your presenters are [@uglybugger](https://twitter.com/uglybugger) and [@kkozmic](https://twitter.com/kkozmic). By all means, please have fun - but be nice.
 
 We're looking forward to seeing you there!
+
+# All done? Here's some follow-up material.
+
+## To read
+
+* Eric Evans, "Domain-Driven Design: Tackling Complexity in the Heart of Software"
+* Michael Feathers, "Working Effectively with Legacy Code"
+* Roy Osherove, "The Art of Unit Testing"
+* Eric Freeman et al, "Head-first Design Patterns"
+* Robert C. Martin, "Clean Code: A Handbook of Agile Software Craftsmanship"
+* Jez Humble and David Farley, "Continuous Delivery"
+* Andrew Hunt and David Thomas, "The Pragmatic Programmer: From Journeyman to Master"
+* Mark Seeman, "Dependency Injection in .NET"
+
+## To watch
+
+* [IoC from First Principles: Top Gear Style](http://www.codingforfunandprofit.com/blog/video_from_my_dddbrisbane_talk_yesterday_is_now_online)
+
+## To Google
+
+* [Domain events](http://lmgtfy.com/?q=domain+events)
+* Sagas
+
+## Feedback?
+
+We'd love to hear from you. Feel free to contact us at firstname dot lastname at readify dot net.
